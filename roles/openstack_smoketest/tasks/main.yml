@@ -1,18 +1,18 @@
 ---
-# - name: OpenStack servers
-#   os_server_facts:
-#     cloud: ospcloud
-#     server: frontend
-#   register: facts_result
+- name: OpenStack servers
+  os_server_facts:
+    cloud: ospcloud
+    server: frontend
+  register: facts_result
 
 - name: check front end for string
   uri:
-    url:  "http://10.10.10.9"
+    url:  "http://{{item.public_v4}}"
     return_content: yes
   #retries: 5
   #delay: 10
   #until: uri_result.status is '200'
-  #loop: "{{ facts_result.ansible_facts.openstack_servers }}"
+  with_items: "{{ facts_result.ansible_facts.openstack_servers }}"
   register: uri1
 
 - name: debug uri result
@@ -22,6 +22,6 @@
 - name: If status code is not 200, fail.
   fail:
   when: item.status != '200'
-  loop: "{{ uri1.results }}"
+  loop: "{{ uri1.results|dict2items }}"
 
   
