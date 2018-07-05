@@ -32,7 +32,9 @@
     kind: ssh
     ssh_key_data: "{{key.stdout}}"
     username: ec2-user
-    tower_config_file: "~/.tower_cli.cfg"
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+    tower_username: "{{tower_user}}"
+    tower_password: "{{tower_user}}"
 
 - name: remove tower-cli
   pip:
