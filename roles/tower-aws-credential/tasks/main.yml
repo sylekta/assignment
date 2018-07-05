@@ -22,7 +22,7 @@
 
 - name: find aws key name
   shell: "find ~/.ssh -name *key.pem"
-    register: key
+  register: key
 
 - name: create tower credential
   tower_credential:
