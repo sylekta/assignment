@@ -15,5 +15,6 @@
     description: AWS User
     organization: Default
     ssh_key_data: "{{key}}"
+    kind: ssh
     state: present
     tower_config_file: "~/.tower_cli.cfg"
