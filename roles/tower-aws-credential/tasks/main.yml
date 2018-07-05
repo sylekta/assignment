@@ -27,11 +27,11 @@
 - name: create tower credential
   tower_credential:
     name: ec2-user
-    description: AWS User
     organization: Default
-    ssh_key_data: "{{key.stdout}}"
-    kind: ssh
     state: present
+    kind: ssh
+    ssh_key_data: "{{key.stdout}}"
+    username: ec2-user
     tower_config_file: "~/.tower_cli.cfg"
 
 - name: remove tower-cli
