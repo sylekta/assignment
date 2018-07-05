@@ -11,11 +11,15 @@
   gather_facts: no
   tasks:
 
-    - name: localhost uri check to get the network rules working properlu
+    - name: "wait for tomcat to come up"
       uri:
-        url: http://localhost:8080
-        return_content: yes
-        
+        url: "http://127.0.0.1:8080"
+        status_code: 200
+      register: result
+      until: result.status == 200
+      retries: 30
+      delay: 10
+
 
 - hosts: jumpbox
   become: yes
