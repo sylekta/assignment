@@ -6,16 +6,16 @@
 #     include_role:
 #       name: openstack_facts
 
-- name: localhost uri check on apps
-  hosts: apps
-  gather_facts: true
-  become: true
-  tasks:
+# - name: localhost uri check on apps
+#   hosts: apps
+#   gather_facts: true
+#   become: true
+#   tasks:
 
-    - name: localhost uri check to get the network rules working properlu
-      uri:
-        url: http://localhost
-        return_content: yes
+#     - name: localhost uri check to get the network rules working properlu
+#       uri:
+#         url: http://localhost
+#         return_content: yes
 
 - hosts: jumpbox
   become: yes

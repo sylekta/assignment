@@ -49,3 +49,7 @@
     - name: install postgress
       include_role:
         name: geerlingguy.haproxy
+
+    - name: pausing to give networking rule time to sort themselves out
+      pause:
+        minutes: 2
