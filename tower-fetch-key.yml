@@ -9,7 +9,8 @@
     
     - name: debug key var
       debug:
-        msg: "{{key}}"
+        var: key
+        verbosity: 2
 
     - name: fetch the aws key
       fetch: 
