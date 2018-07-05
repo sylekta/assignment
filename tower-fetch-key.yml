@@ -6,6 +6,10 @@
     - name: find aws key name
       shell: "find ~/.ssh -name *key.pem"
       register: key
+    
+    - name: debug key var
+      debug:
+        msg: "{{key}}"
 
     - name: fetch the aws key
       fetch: 
