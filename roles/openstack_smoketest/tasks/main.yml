@@ -13,7 +13,6 @@
     - "{{ openstack_result.ansible_facts.openstack_servers }}"
   register: webcheck
   
-
 - name: Fail if Status Code is not 200
   fail:
   when: item.status != 200
