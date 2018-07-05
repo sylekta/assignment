@@ -44,3 +44,8 @@
 - name: Wait for mail
   pause:
     minutes: 10
+
+- name: clean up credential file
+  file:
+    path: /root/credential.rc
+    state: absent
