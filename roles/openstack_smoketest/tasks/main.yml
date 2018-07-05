@@ -13,9 +13,11 @@
   #delay: 10
   #until: uri_result.status is '200'
   loop: "{{ facts_result.ansible_facts.openstack_servers }}"
-  register: uri_result
-- debug:
-    msg: Status code is - "{{uri_result}}"
+  register: uri1
+
+- name: debug uri result
+  debug:
+    msg: Status code is - "{{uri1}}"
 
 - name: If status code is not 200, fail.
   fail:
