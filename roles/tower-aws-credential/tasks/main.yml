@@ -5,11 +5,15 @@
     dest: "~/.tower_cli.cfg"
     mode: 0600
 
+- name: find aws key name
+  shell: "find ~/.ssh -name *key.pem"
+  register: key
+
 - name: create tower credential
   tower_credential:
     name: ec2-user
     description: AWS User
     organization: Default
-    ssh_key_data: ~/.ssh/"{{tower_GUID}}"key.pem
+    ssh_key_data: "{{key}}"
     state: present
     tower_config_file: "~/.tower_cli.cfg"
