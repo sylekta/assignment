@@ -9,15 +9,17 @@
   uri:
     url:  "http://{{item.public_v4}}"
     return_content: yes
-  retries: 5
-  delay: 10
+  #retries: 5
+  #delay: 10
   register: uri_result
-  until: uri_result.status is '200'
+  #until: uri_result.status is '200'
   loop: "{{ facts_result.ansible_facts.openstack_servers }}"
+- debug:
+    msg: Status code is - "{{uri_result.status}}"
 
 - name: If status code is not 200, fail.
   fail:
-  when: item.status is not 200
+  when: item.status != '200'
   loop: "{{ uri_result.results }}"
 
   
