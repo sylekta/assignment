@@ -1,0 +1,14 @@
+---
+
+#prep-server vars#
+common_packages: ['httpie']
+repo_file_path: /etc/yum.repos.d
+repo_file_name: open_three-tier-app.repo
+
+#app-server vars#
+tomcat_root: /usr/share/tomcat/webapps/ROOT
+
+#testing#
+domain: .example.opentlc.com
+string_check: "Welcome to Tomcat on app"
+

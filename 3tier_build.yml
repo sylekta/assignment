@@ -1,0 +1,51 @@
+- hosts: jumpbox
+  gather_facts: yes
+  tasks:
+
+  - name: openstack facts
+    include_role:
+      name: openstack_facts
+
+
+- name: build_db_server
+  hosts: appdbs
+  gather_facts: true
+  become: true
+  tasks:
+
+    - name: prep server
+      include_role:
+        name: prep-server
+
+    - name: install postgress
+      include_role:
+        name: geerlingguy.postgresql
+
+
+- name: build_app_server
+  hosts: apps
+  gather_facts: true
+  become: true
+  tasks:
+
+    - name: prep server
+      include_role:
+        name: prep-server
+
+    - name: install postgress
+      include_role: 
+        name: app-servers
+
+- name: build_frontend_server
+  hosts: frontends
+  gather_facts: true
+  become: true
+  tasks:
+
+    - name: prep server
+      include_role:
+        name: prep-server
+
+    - name: install postgress
+      include_role:
+        name: geerlingguy.haproxy

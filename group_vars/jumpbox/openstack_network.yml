@@ -1,0 +1,24 @@
+---
+networks:
+  int_net:
+    cloud_name: ospcloud
+    state: present
+    network_name: int_network
+    subnet_name: int_subnet
+    cidr_network: "20.20.20.0/24"
+    external: false
+
+  ext_net:
+    cloud_name: ospcloud
+    state: present
+    network_name: ext_network
+    subnet_name: ext_subnet
+    cidr_network: "10.10.10.0/24"
+    external: true
+
+routers:
+  router:
+    cloud_name: ospcloud
+    state: present
+    name: router
+    network: ext_network

@@ -1,0 +1,10 @@
+---
+- name: create openstack networks
+  hosts: jumpbox
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: create openstack networks
+      include_role:
+        name: openstack_network
