@@ -1,14 +1,4 @@
 ---
-- name: Configure the tower cli file
-  template:
-    src: tower_cli.cfg.j2
-    dest: "~/.tower_cli.cfg"
-    mode: 0600
-
-- name: find aws key name
-  shell: "find ~/.ssh -name *key.pem"
-  register: key
-
 - name: create tower credential
   tower_credential:
     name: ec2-user

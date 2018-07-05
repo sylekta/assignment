@@ -1,0 +1,13 @@
+- name: fetch aws key
+  hosts: bastions
+  gather_facts: true
+  become: true
+  tasks:
+    - name: find aws key name
+      shell: "find ~/.ssh -name *key.pem"
+      register: key
+
+    - name: fetch the aws key
+      fetch: 
+        src: "{{key}}"
+        dest: /tmp/aws.pem

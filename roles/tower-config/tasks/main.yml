@@ -1,0 +1,20 @@
+- name: Install required packages 
+  yum: 
+     name: "{{item}}"
+     state: latest 
+  loop: 
+    - python 
+    - python-pip 
+    - python-devel 
+    - gcc
+
+- name: Install tower-cli
+  pip:
+    name: ansible-tower-cli
+    state: latest
+
+- name: Configure the tower cli file
+  template:
+    src: tower_cli.cfg.j2
+    dest: "~/.tower_cli.cfg"
+    mode: 0600
