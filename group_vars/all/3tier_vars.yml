@@ -1,4 +1,5 @@
 ---
+tower_GUID: c51d
 
 #prep-server vars#
 common_packages: ['httpie']
@@ -11,4 +12,5 @@ tomcat_root: /usr/share/tomcat/webapps/ROOT
 #testing#
 domain: .example.opentlc.com
 string_check: "Welcome to Tomcat on app"
+
 
