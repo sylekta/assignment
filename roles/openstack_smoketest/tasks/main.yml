@@ -15,7 +15,7 @@
   #until: uri_result.status is '200'
   loop: "{{ facts_result.ansible_facts.openstack_servers }}"
 - debug:
-    msg: Status code is - "{{item}}"
+    msg: Status code is - "{{uri_result}}"
 
 - name: If status code is not 200, fail.
   fail:
