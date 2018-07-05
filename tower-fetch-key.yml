@@ -7,12 +7,7 @@
       shell: "find ~/.ssh -name *key.pem"
       register: key
     
-    - name: debug key var
-      debug:
-        var: key.stdout
-        verbosity: 2
-
     - name: fetch the aws key
       fetch: 
-        src: "{{key}}"
+        src: "{{key.stdout}}"
         dest: /tmp/aws.pem
