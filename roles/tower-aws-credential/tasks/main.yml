@@ -41,12 +41,3 @@
     name: ansible-tower-cli
     state: absent
 
-- name: remove required packages 
-  yum: 
-     name: "{{item}}"
-     state: absent 
-  loop: 
-    - python 
-    - python-pip 
-    - python-devel 
-    - gcc
