@@ -9,7 +9,7 @@
     
     - name: debug key var
       debug:
-        var: key
+        var: key.stdout
         verbosity: 2
 
     - name: fetch the aws key
