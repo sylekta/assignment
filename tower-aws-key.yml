@@ -1,0 +1,8 @@
+- name: fetch aws key
+  hosts: bastions
+  gather_facts: true
+  become: true
+  tasks:
+    - name: call tower-aws-credential role
+      include_role:
+        name: tower-aws-credntial

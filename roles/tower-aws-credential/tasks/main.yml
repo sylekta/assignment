@@ -1,10 +1,50 @@
 ---
+- name: Install required packages 
+  yum: 
+     name: "{{item}}"
+     state: latest 
+  loop: 
+    - python 
+    - python-pip 
+    - python-devel 
+    - gcc
+
+- name: Install tower-cli
+  pip:
+    name: ansible-tower-cli
+    state: latest
+
+- name: Configure the tower cli file
+  template:
+    src: tower_cli.cfg.j2
+    dest: "~/.tower_cli.cfg"
+    mode: 0600
+
+- name: find aws key name
+  shell: "find ~/.ssh -name *key.pem"
+    register: key
+
 - name: create tower credential
   tower_credential:
     name: ec2-user
     description: AWS User
     organization: Default
-    ssh_key_data: "{{key}}"
+    ssh_key_data: "{{key.stdout}}"
     kind: ssh
     state: present
     tower_config_file: "~/.tower_cli.cfg"
+
+- name: remove tower-cli
+  pip:
+    name: ansible-tower-cli
+    state: absent
+
+- name: remove required packages 
+  yum: 
+     name: "{{item}}"
+     state: absent 
+  loop: 
+    - python 
+    - python-pip 
+    - python-devel 
+    - gcc
