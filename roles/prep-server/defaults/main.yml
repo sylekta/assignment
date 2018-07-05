@@ -1,0 +1,5 @@
+---
+repo_url:
+repo_file_path: /etc/yum.repos.d
+repo_file_name: open_three-tier-app.repo
+common_packages: ['httpie', 'python-pip']

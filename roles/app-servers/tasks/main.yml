@@ -1,0 +1,25 @@
+#Role to install tomcat, enable the service, create a root directory then copy the index template to it and restart service#
+---
+- name: install tomcat
+  yum:
+    name: tomcat
+    state: present
+
+- name: enable tomcat service
+  service:
+    name: tomcat
+    state: started
+    enabled: yes
+
+- name: create tomcat root dir
+  file:
+    path: "{{tomcat_root}}"
+    state: directory
+
+- name: copy index.html.j2 template to tomcat root dir
+  template:
+    src:  index.html.j2
+    dest: "{{tomcat_root}}/index.html"
+    mode: 0644
+  notify:
+    - restart_tomcat

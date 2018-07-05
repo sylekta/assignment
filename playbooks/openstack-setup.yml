@@ -1,0 +1,25 @@
+- hosts: jumpbox
+  gather_facts: yes
+  tasks:
+
+  - name: openstack prep
+    include_role:
+      name: openstack_network
+  
+  - name: openstack prep
+    include_role:
+      name: openstack_key
+
+  - name: openstack prep
+    include_role:
+      name: osp-securitygroup
+  
+  - name: openstack prep
+    include_role:
+      name: openstack_flavor
+
+  - name: openstack instances
+    include_role:
+      name: openstack_instances
+  
+  

@@ -1,0 +1,9 @@
+- hosts: jumpbox
+  gather_facts: yes
+  tasks:
+
+  - name: openstack instances
+    include_role:
+      name: openstack_instances
+  
+  

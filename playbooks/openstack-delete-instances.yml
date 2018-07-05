@@ -1,0 +1,9 @@
+- hosts: jumpbox
+  gather_facts: yes
+  tasks:
+
+  - name: openstack delete instances
+    include_role:
+      name: openstack_clean
+
+  

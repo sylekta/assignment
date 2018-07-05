@@ -1,0 +1,11 @@
+- name: Generate key
+  user:
+    name: "{{ ansible_env.USER }}"
+    generate_ssh_key: yes
+    ssh_key_file: ".ssh/{{ ansible_env.USER }}_id_rsa"
+- name: Add keypair to openstack
+  os_keypair:
+    cloud: ospcloud
+    state: present
+    name: ansible_ssh
+    public_key_file: "{{ ansible_env.HOME }}/.ssh/{{ ansible_env.USER }}_id_rsa.pub"
