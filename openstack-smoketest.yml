@@ -1,0 +1,10 @@
+- hosts: jumpbox
+  become: yes
+  gather_facts: yes
+  tasks:
+
+  - name: smoketest openstack
+    include_role:
+      name: openstack_smoketest
+  
+  
