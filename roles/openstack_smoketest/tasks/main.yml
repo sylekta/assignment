@@ -11,9 +11,9 @@
     return_content: yes
   #retries: 5
   #delay: 10
-  register: uri_result
   #until: uri_result.status is '200'
   loop: "{{ facts_result.ansible_facts.openstack_servers }}"
+  register: uri_result
 - debug:
     msg: Status code is - "{{uri_result}}"
 
