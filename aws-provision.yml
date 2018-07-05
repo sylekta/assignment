@@ -1,0 +1,9 @@
+---
+- hosts: jumpbox
+  become: true
+  gather_facts: false
+  tasks:
+
+    - name: call aws_provision role
+      include_role:
+        name: aws_provision
