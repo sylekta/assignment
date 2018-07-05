@@ -10,10 +10,10 @@
     url:  "http://{{item.public_v4}}"
     return_content: yes
   register: uri_result
+  # until:  "'Ansible has done its job' in uri_result.content"
+  # retries: 20
+  # delay: 1
+  failed_when: "'Ansible has done its job' not in uri_result.content"
   loop: "{{ facts_result.ansible_facts.openstack_servers }}"
 
-- name: If status code is not 200, fail.
-  fail:
-  when: item.status != 200
-  loop: "{{ uri_result.results }}"
   
