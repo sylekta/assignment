@@ -22,6 +22,6 @@
 - name: If status code is not 200, fail.
   fail:
   when: item.status != '200'
-  loop: "{{ uri1.results|dict2items }}"
+  with_items: "{{ uri1.results }}"
 
   
