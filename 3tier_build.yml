@@ -50,6 +50,11 @@
       include_role:
         name: geerlingguy.haproxy
 
-    - name: pausing to give networking rule time to sort themselves out
-      pause:
-        minutes: 2
+    - name: Wait for ha proxy to connect to back ends
+      wait_for:
+        host: "{{ item.public_v4 }}"
+        port: 80
+        search_regex: Ansible
+        timeout: 600
+      delegate_to: "{{ inventory_hostname }}"
+      loop: "{{ result.ansible_facts.openstack_servers }}"
