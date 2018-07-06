@@ -1,0 +1,10 @@
+- hosts: bastions
+  become: yes
+  gather_facts: yes
+  tasks:
+
+  - name: smoketest aws
+    include_role:
+      name: aws_smoketest
+  
+  

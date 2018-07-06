@@ -1,0 +1,19 @@
+---
+- name: status check frontend server
+  uri:
+    url: "http://{{item}}"
+    return_content: yes
+  register: webcheck
+  until: webcheck.status == 200
+  retries: 30
+  delay: 10
+  with_items:
+    - "{{ groups['frontends']  }}"
+  
+- name: Fail if Status Code is not 200
+  fail:
+  when: item.status != 200
+  with_items: 
+  - "{{ webcheck.results }}"
+  
+  
