@@ -1,0 +1,8 @@
+---
+- hosts: bastions
+  become: true
+  gather_facts: false
+  tasks:
+
+    - name: wait for aws instance to come up
+      wait_for_connection: 
