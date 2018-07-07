@@ -1,4 +1,4 @@
-- hosts: tag_instance_filter_three_tier_app_garthh_datacom_co_nz
+- hosts: bastions
   gather_facts: false
   tasks:
   - name: check status of aws provisoning
