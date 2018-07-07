@@ -8,4 +8,4 @@
       search_regex: OpenSSH
       timeout: 600
     delegate_to: localhost
-    loop: "{{ inventory_hostname }}"
+    loop: "{{ inventory_hostname|flatten(levels=1) }}"
