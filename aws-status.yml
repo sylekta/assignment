@@ -2,10 +2,5 @@
   gather_facts: false
   tasks:
   - name: check status of aws provisoning
-    wait_for:
-      host: "{{ item }}"
-      port: 22
-      search_regex: OpenSSH
-      timeout: 600
-    delegate_to: localhost
-    loop: "{{ inventory_hostname|flatten(levels=1) }}"
+    wait_for_connection:
+      
