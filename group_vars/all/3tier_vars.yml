@@ -1,7 +1,8 @@
 ---
+#GUID for HA tower#
 tower_GUID: c51d
 
-#prep-server vars#
+#prep-server role vars#
 common_packages: ['httpie']
 repo_file_path: /etc/yum.repos.d
 repo_file_name: open_three-tier-app.repo

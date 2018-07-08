@@ -1,3 +1,4 @@
+#Role to grab key from aws bastion host and then create a tower credential with it#
 ---
 - name: Install required packages 
   yum: 

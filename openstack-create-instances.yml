@@ -3,7 +3,7 @@
   gather_facts: yes
   tasks:
 
-  - name: openstack instances
+  - name: call openstack_instances role
     include_role:
       name: openstack_instances
   

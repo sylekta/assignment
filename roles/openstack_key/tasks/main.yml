@@ -1,3 +1,4 @@
+#Role to generate an sshkey and put the pub key onto the new instances#
 - name: Generate key
   user:
     name: "{{ ansible_env.USER }}"

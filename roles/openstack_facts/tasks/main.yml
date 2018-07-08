@@ -1,3 +1,4 @@
+#Role to gather facts from openstack and add instances found to in memory inventory#
 ---
 - name: grab openstack facts
   os_server_facts:

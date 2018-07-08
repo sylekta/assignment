@@ -1,3 +1,4 @@
+#Role to create the openstack instances and apply floating IP to them#
 ---
 - name: creates openstack instances
   os_server:

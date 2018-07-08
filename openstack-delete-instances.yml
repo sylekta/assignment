@@ -2,7 +2,7 @@
   gather_facts: yes
   tasks:
 
-  - name: openstack delete instances
+  - name: call openstack_clean role
     include_role:
       name: openstack_clean
 

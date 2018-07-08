@@ -1,3 +1,4 @@
+#Role to smoketest the aws 3tier app#
 ---
 - name: status check frontend server
   uri:

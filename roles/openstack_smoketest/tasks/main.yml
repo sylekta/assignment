@@ -1,3 +1,4 @@
+#Role to smoke test openstack 3 tier app#
 ---
 - name: OpenStack facts
   os_server_facts:

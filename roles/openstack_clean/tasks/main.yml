@@ -1,3 +1,4 @@
+#Role to remove openstack instances#
 ---
   - name: grab openstack facts
     os_server_facts:

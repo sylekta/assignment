@@ -1,3 +1,4 @@
+#Vars for the create-networks openstack role#
 ---
 networks:
   int_net:

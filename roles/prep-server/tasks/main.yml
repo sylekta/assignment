@@ -1,3 +1,4 @@
+#Role to do some pre-configuration on servers#
 ---
 - name: copy repo template
   template:

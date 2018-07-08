@@ -2,7 +2,7 @@
   gather_facts: yes
   tasks:
 
-  - name: openstack facts
+  - name: call openstack facts role
     include_role:
       name: openstack_facts
 

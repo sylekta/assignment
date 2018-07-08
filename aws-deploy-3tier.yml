@@ -4,11 +4,11 @@
   become: true
   tasks:
 
-    - name: prep server
+    - name: call prep-server role
       include_role:
         name: prep-server
 
-    - name: install postgress
+    - name: call geerlingguy.postgresql role to install and configure postgres
       include_role:
         name: geerlingguy.postgresql
 
@@ -19,11 +19,11 @@
   become: true
   tasks:
 
-    - name: prep server
+    - name: call prep-server role
       include_role:
         name: prep-server
 
-    - name: install postgress
+    - name: call app-servers role to install and configure tomcat
       include_role: 
         name: app-servers
 
@@ -33,10 +33,10 @@
   become: true
   tasks:
 
-    - name: prep server
+    - name: call prep-server role
       include_role:
         name: prep-server
 
-    - name: install haxproxy on front end
+    - name: call geerlingguy.haproxy role to install and configure haproxy
       include_role:
         name: geerlingguy.haproxy

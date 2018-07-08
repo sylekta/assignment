@@ -1,3 +1,4 @@
+#Role to create openstack networks#
 ---
 - name: Create openstack networks
   os_network:

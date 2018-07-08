@@ -1,3 +1,4 @@
+# Role to provision AWS 3 tier app instance#
 ---
 - name: create bin directory
   file:
@@ -28,20 +29,18 @@
     dest: /root/credential.rc
     mode: 0400
 
-# Fix the existing shell scripts to reference jq command with bin/jq
 - name: fix scripts
   shell: "sed -i 's/ jq/ bin\\/jq/g' {{ item }}"
   with_items:
     - /root/common.sh
     - /root/order_svc.sh
 
-# Using this script will always deploy environments in the us-east-1 region.
 - name: order service on opentlc
   shell: source /root/credential.rc; /root/order_svc.sh -y -c 'OPENTLC Automation' -i 'Three Tier Application' -t 1
   args:
     chdir: /root
 
-- name: Wait for mail
+- name: Wait for instance to deploy
   pause:
     minutes: 10
 
